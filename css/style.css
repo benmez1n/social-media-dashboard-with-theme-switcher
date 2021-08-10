@@ -1,0 +1,168 @@
+:root{
+    --lim-green:hsl(163, 72%, 41%);
+    --bright-red:hsl(356, 69%, 56%);
+    --facebook:hsl(208, 92%, 53%);
+    --twitter:hsl(203, 89%, 53%);
+    --instagram:to right,hsl(37, 97%, 70%),hsl(329, 70%, 58%) ;
+    --youtube:hsl(348, 97%, 39%);
+    --toggle-dark:to right,hsl(210, 78%, 56%),hsl(146, 68%, 55%);
+    --toggle-light:hsl(230, 22%, 74%); 
+}
+/*general*/
+.container{width:1170px;margin:0 auto;font-family: Inter;}
+main{transform: translateY(-120px);}
+/*............*/
+/*mode (dark/light)*/
+/*Light*/
+.light{
+    background-color:white ;
+    color:hsl(228, 12%, 44%);
+}
+.light h1,.light .nbr{color:hsl(230, 17%, 14%)}
+.light header{background-color:hsl(225, 100%, 98%);}
+.light #switcher{background-color: var(--toggle-light);}
+.light  #switcher::after{
+    background-color:white;
+    top:2px;
+    left:85%;
+}
+.light #followers >div,
+.light #interactions-list>div{background-color:hsl(227, 47%, 96%);}
+/*Dark*/
+.dark{
+    background-color: hsl(230, 17%, 14%);
+    color:hsl(228, 34%, 66%);
+}
+.dark h1,.dark .nbr{color:hsl(0, 0%, 100%)}
+.dark header{background-color: hsl(232, 19%, 15%);}
+.dark #switcher{background-image:linear-gradient(var(--toggle-dark));}
+.dark  #switcher::after{
+    background-color:hsl(230, 17%, 14%);
+    top:2px;
+    left:92px;
+}
+.dark #followers >div,
+.dark #interactions-list>div{background-color:hsl(228, 28%, 20%);}
+/*.............*/
+
+/*elements general style*/
+
+/*header*/
+header .container{
+    padding-top:50px;
+    height:220px;
+    display: flex;
+    justify-content:space-between;
+}
+header h1{margin: 0;}
+header span{font-weight: bold;font-size: 14px;}
+#mode-cntrl{display: flex;position: relative;}
+#switcher{
+    width:50px;
+    height: 20px;
+    margin-left:15px;
+    border-radius: 10px ;
+}
+#switcher::after{
+    content: "";
+    position: absolute;
+    width:18px;
+    height: 16px;
+    border-radius: 50%;
+}
+/*...........*/
+
+/*followers*/
+#followers{margin-bottom: 50px;}
+#followers,
+#interactions-list{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    gap:30px;
+}
+#followers >div{
+    height: 180px;
+    display: flex;
+    padding-top:30px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    border-top:4px solid;
+}
+#followers div:first-child{border-color:var(--facebook)}
+#followers div:nth-child(2){border-color: var(--twitter);}
+#followers div:nth-child(3){
+    border-color:transparent;
+    border-image: linear-gradient(var(--instagram)) 40%  stretch;
+    border-radius: 5px;
+}
+#followers div:last-child{border-color: var(--youtube);}
+#followers .name{margin-bottom:25px}
+#followers .name img{transform:translate(-2px,4px)}
+#followers .nbr{font-size:46px;font-weight: bold;}
+#followers .type{
+    margin-bottom:25px;
+    opacity: .6;
+    letter-spacing: 5px;
+}
+.up-down{font-size: 12px;font-weight: bold;}
+.up-down img{margin:0 1px 2px}
+.up{color:var(--lim-green)}
+.down{color:var(--bright-red)}
+/*.......*/
+/*Interactions*/
+#interactions-list>div{
+    height: 100px;
+    display: grid;
+    border-radius: 5px;
+    padding:20px 0 10px 20px;
+    grid-template-columns: 70% 22%;
+    row-gap: 30px;
+}
+#interactions-list >div >img{margin-left:25px}
+#interactions .nbr{font-size: 32px;font-weight: bold;}
+#interactions .up-down{transform: translateY(15px);}
+#interactions .type{font-size: 14px;font-weight: bold;}
+/*...........*/
+/*hover*/
+.dark #interactions-list>div:hover,
+.dark #followers >div:hover{background-color:hsl(230, 22%, 27%);cursor: pointer;}
+.light #interactions-list>div:hover,
+.light #followers >div:hover{background-color:hsl(226, 17%, 85%);cursor: pointer;}
+#switcher:hover{background-image:linear-gradient(var(--toggle-dark)) ;cursor: pointer;}
+/*.......*/
+
+@media (max-width:769px){
+    .container{width:80%}
+    header .container{flex-direction: column;height: max-content;}
+    #mode-cntrl{
+        justify-content: space-between;
+        margin-top:20px;
+        padding:20px 0;
+        border-top:1px solid;
+    }
+    main{transform: translateY(0);margin-top:20px}
+    #followers,
+    #interactions-list{grid-template-columns: repeat(1,auto);}
+    #interactions-list >div{
+        grid-template-columns: 78% 22%;
+    }
+    .dark  #switcher::after{
+        top:22px;
+        left:84.5%;
+    }
+    .light  #switcher::after{
+        top:22px;
+        left:93%;
+    }
+}
+@font-face {
+    font-family: Inter;
+    font-weight: 400;
+    src: url(../fonts/Inter-Regular.ttf);
+}
+@font-face {
+    font-family: Inter;
+    font-weight: bold;
+    src: url(../fonts/Inter-Bold.ttf);
+}
